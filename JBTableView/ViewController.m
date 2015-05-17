@@ -8,8 +8,13 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+#import "JBTableView.h"
 
+@interface ViewController () <
+UITableViewDataSource,
+UITableViewDelegate
+>
+@property (weak, nonatomic) IBOutlet JBTableView *tableView;
 @end
 
 @implementation ViewController
@@ -24,4 +29,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.1f;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 23;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = @"aa";
+    return cell;
+}
+
 @end
+
+

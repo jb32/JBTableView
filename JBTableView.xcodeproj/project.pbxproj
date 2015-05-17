@@ -14,6 +14,8 @@
 		52A3E6E51B088B9D00B39606 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52A3E6E41B088B9D00B39606 /* Images.xcassets */; };
 		52A3E6E81B088B9D00B39606 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A3E6E61B088B9D00B39606 /* LaunchScreen.xib */; };
 		52A3E6F41B088B9D00B39606 /* JBTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A3E6F31B088B9D00B39606 /* JBTableViewTests.m */; };
+		52A3E7061B088C8B00B39606 /* JBSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A3E7051B088C8B00B39606 /* JBSupplementaryView.m */; };
+		52A3E7091B088D5F00B39606 /* JBTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A3E7081B088D5F00B39606 /* JBTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		52A3E6ED1B088B9D00B39606 /* JBTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JBTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A3E6F21B088B9D00B39606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A3E6F31B088B9D00B39606 /* JBTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JBTableViewTests.m; sourceTree = "<group>"; };
+		52A3E7041B088C8B00B39606 /* JBSupplementaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSupplementaryView.h; sourceTree = "<group>"; };
+		52A3E7051B088C8B00B39606 /* JBSupplementaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSupplementaryView.m; sourceTree = "<group>"; };
+		52A3E7071B088D5F00B39606 /* JBTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTableView.h; sourceTree = "<group>"; };
+		52A3E7081B088D5F00B39606 /* JBTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 				52A3E6DC1B088B9D00B39606 /* AppDelegate.m */,
 				52A3E6DE1B088B9D00B39606 /* ViewController.h */,
 				52A3E6DF1B088B9D00B39606 /* ViewController.m */,
+				52A3E6FD1B088BE900B39606 /* JBTableView */,
 				52A3E6E11B088B9D00B39606 /* Main.storyboard */,
 				52A3E6E41B088B9D00B39606 /* Images.xcassets */,
 				52A3E6E61B088B9D00B39606 /* LaunchScreen.xib */,
@@ -117,6 +124,17 @@
 				52A3E6F21B088B9D00B39606 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52A3E6FD1B088BE900B39606 /* JBTableView */ = {
+			isa = PBXGroup;
+			children = (
+				52A3E7041B088C8B00B39606 /* JBSupplementaryView.h */,
+				52A3E7051B088C8B00B39606 /* JBSupplementaryView.m */,
+				52A3E7071B088D5F00B39606 /* JBTableView.h */,
+				52A3E7081B088D5F00B39606 /* JBTableView.m */,
+			);
+			path = JBTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +237,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A3E7061B088C8B00B39606 /* JBSupplementaryView.m in Sources */,
 				52A3E6E01B088B9D00B39606 /* ViewController.m in Sources */,
 				52A3E6DD1B088B9D00B39606 /* AppDelegate.m in Sources */,
 				52A3E6DA1B088B9D00B39606 /* main.m in Sources */,
+				52A3E7091B088D5F00B39606 /* JBTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
