@@ -29,7 +29,7 @@
 @protocol JBTableViewTouchDelegate <NSObject>
 @optional
 /**
- *table view bengan touch
+ *table view began touch
  */
 - (void)tableView:(JBTableView *)tableView touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 /**
@@ -49,7 +49,7 @@
 }
 ///上拉，下拉 刷新 代理
 @property (weak, nonatomic) IBOutlet id<JBTableViewDelegate>JBDelegate;
-///点击tableview 是调用的 代理
+///点击tableview 时调用的 代理
 @property (weak, nonatomic) IBOutlet id<JBTableViewTouchDelegate>JBTouchDelegate;
 ///NO 没有下拉刷新 默认YES
 @property (assign, nonatomic) BOOL  isHaveRefreshView;
