@@ -60,7 +60,7 @@ typedef enum : NSUInteger {
 }
 
 - (void)initUI {
-    self.isFinish = NO;
+    _isFinish = NO;
     
     _isHaveLoadView = YES;
     _isHaveRefreshView = YES;
@@ -119,7 +119,7 @@ typedef enum : NSUInteger {
                 if (_isHaveRefreshView) {
                     _state = ITRStatePulling;
                 }
-                [_refreshView willBeginWithMsg:_willStatUp];
+                [_refreshView willBegin];
             } else if (new.y + CGRectGetHeight(self.frame) - self.contentSize.height >= KTriggerOffsetY
                        && old.y + CGRectGetHeight(self.frame) - self.contentSize.height <= KTriggerOffsetY
                        && _state == ITRStateNormal) {
@@ -128,7 +128,7 @@ typedef enum : NSUInteger {
                 if (_isHaveLoadView) {
                     _state = ITRStateLoading;
                 }
-                [_loadView willBeginWithMsg:_willStatDown];
+                [_loadView willBegin];
             }
         } else if (self.decelerating && (_state == ITRStatePulling || _state == ITRStateLoading)) {
 //            NSLog(@"开始刷新/加载");
@@ -157,17 +157,17 @@ typedef enum : NSUInteger {
 
 - (void)tableViewDidDragging {
 //    NSLog(@"正在拖动");
-    [_refreshView shouldBeginWithMsg:_shouldStatUp];
-    [_loadView shouldBeginWithMsg:_shouldStatDown];
+    [_refreshView shouldBegin];
+    [_loadView shouldBegin];
 }
 
 - (void)tableViewDidEndDragging {
     self.insets = self.contentInset;
     
     if (_refreshView.isBegin) {
-        [_refreshView didBeginWithMsg:_didStatUp];
+        [_refreshView didBegin];
     } else if (_loadView.isBegin) {
-        [_loadView didBeginWithMsg:_didStatDown];
+        [_loadView didBegin];
     }
     
     if (_state == ITRStatePulling) {
@@ -207,10 +207,10 @@ typedef enum : NSUInteger {
     }
     
     if (_refreshView.isBegin) {
-        [_refreshView endWithMsg:_endStatUp];
+        [_refreshView end];
     } else if (_loadView.isBegin) {
         _loadView.isFinish = _isFinish;
-        [_loadView endWithMsg:_endStatDown];
+        [_loadView end];
     }
 }
 

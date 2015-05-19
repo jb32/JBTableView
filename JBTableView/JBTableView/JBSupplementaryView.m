@@ -25,20 +25,20 @@
     return self;
 }
 
-- (void)shouldBeginWithMsg:(NSString *)msg {
+- (void)shouldBegin {
     _isShouldBegin = YES;
 }
 
-- (void)willBeginWithMsg:(NSString *)msg {
+- (void)willBegin {
     _isBegin = YES;
     _isShouldBegin = NO;
 }
 
-- (void)didBeginWithMsg:(NSString *)msg {
+- (void)didBegin {
     
 }
 
-- (void)endWithMsg:(NSString *)msg {
+- (void)end {
     _isBegin = NO;
 }
 
@@ -88,20 +88,19 @@
     _line.frame = CGRectMake(0, CGRectGetHeight(self.frame) - 0.5, CGRectGetWidth(self.frame), 0.5);
 }
 
-- (void)shouldBeginWithMsg:(NSString *)msg {
-    [super shouldBeginWithMsg:msg];
-    _beginMsg = msg;
+- (void)shouldBegin {
+    [super shouldBegin];
 }
 
-- (void)willBeginWithMsg:(NSString *)msg {
-    [super willBeginWithMsg:msg];
+- (void)willBegin {
+    [super willBegin];
     
     [_lbState setText:@"释放刷新"];
     [_lbState sizeToFit];
 }
 
-- (void)didBeginWithMsg:(NSString *)msg {
-    [super didBeginWithMsg:msg];
+- (void)didBegin {
+    [super didBegin];
     
     [_lbState setText:@"正在刷新"];
     [_lbState sizeToFit];
@@ -109,8 +108,8 @@
     [_indicatorView startAnimating];
 }
 
-- (void)endWithMsg:(NSString *)msg {
-    [super endWithMsg:@"刷新完毕"];
+- (void)end {
+    [super end];
     
     [_lbState setText:@"刷新完毕"];
     [_lbState sizeToFit];
@@ -171,19 +170,18 @@
     _line.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5);
 }
 
-- (void)shouldBeginWithMsg:(NSString *)msg {
-    [super shouldBeginWithMsg:msg];
-    _beginMsg = msg;
+- (void)shouldBegin {
+    [super shouldBegin];
 }
 
-- (void)willBeginWithMsg:(NSString *)msg {
-    [super willBeginWithMsg:msg];
+- (void)willBegin {
+    [super willBegin];
     [_lbState setText:@"释放加载"];
     [_lbState sizeToFit];
 }
 
-- (void)didBeginWithMsg:(NSString *)msg {
-    [super didBeginWithMsg:msg];
+- (void)didBegin {
+    [super didBegin];
     
     [_lbState setText:@"加载中……"];
     [_lbState sizeToFit];
@@ -191,8 +189,8 @@
     [_indicatorView startAnimating];
 }
 
-- (void)endWithMsg:(NSString *)msg {
-    [super endWithMsg:msg];
+- (void)end {
+    [super end];
     
     if (_isFinish) {
         [_lbState setText:@"加载完毕"];

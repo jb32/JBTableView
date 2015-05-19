@@ -12,10 +12,10 @@
 @property (readonly, nonatomic) BOOL isBegin;
 @property (readonly, nonatomic) BOOL isShouldBegin;
 
-- (void)shouldBeginWithMsg:(NSString *)msg;
-- (void)willBeginWithMsg:(NSString *)msg;
-- (void)didBeginWithMsg:(NSString *)msg;
-- (void)endWithMsg:(NSString *)msg;
+- (void)shouldBegin;
+- (void)willBegin;
+- (void)didBegin;
+- (void)end;
 
 @end
 
