@@ -38,13 +38,25 @@ UITableViewDelegate
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 23;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = @"aa";
     return cell;
+}
+
+- (void)tableView:(JBTableView *)tableView touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"it's touched");
+}
+
+- (void)tableView:(JBTableView *)tableView touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"it's moving");
+}
+
+- (void)tableView:(JBTableView *)tableView touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"it's end");
 }
 
 @end

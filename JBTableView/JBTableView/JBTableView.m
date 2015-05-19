@@ -95,6 +95,10 @@ typedef enum : NSUInteger {
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     if ([keyPath isEqualToString:@"contentOffset"]) {
+        if ([_JBTouchDelegate respondsToSelector:@selector(tableView:touchesMoved:withEvent:)]) {
+            [_JBTouchDelegate tableView:self touchesMoved:nil withEvent:nil];
+        }
+        
         CGPoint new = [[change objectForKey:@"new"] CGPointValue];
         CGPoint old = [[change objectForKey:@"old"] CGPointValue];
         
