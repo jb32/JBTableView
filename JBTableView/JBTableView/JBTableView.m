@@ -145,7 +145,7 @@ typedef enum : NSUInteger {
             frame.origin.y = contentSize.height < self.frame.size.height ? self.frame.size.height - insets.bottom - insets.top: contentSize.height;
             _loadView.frame = frame;
             
-            _isHaveLoadView = contentSize.height >= frame.size.height;
+            _isHaveLoadView = contentSize.height >= self.frame.size.height;
             _loadView.hidden = !_isHaveLoadView;
         }
     }
