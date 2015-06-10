@@ -13,17 +13,9 @@
 #define KStayOffsetY 40.f
 #define kPRAnimationDuration 0.18f
 
-typedef enum : NSUInteger {
-    ITRStateNormal = 0,
-    ITRStateStay,
-    ITRStatePulling,
-    ITRStateLoading,
-} KTableState;
-
 @interface JBTableView ()
 @property (strong, nonatomic) JBRefreshView *refreshView;
 @property (strong, nonatomic) JBLoadView    *loadView;
-@property (assign, nonatomic) KTableState   state;
 @property (assign, nonatomic) UIEdgeInsets  insets;
 @end
 
@@ -110,27 +102,27 @@ typedef enum : NSUInteger {
         }
         
         if (self.tracking) {
-            if (offsetY >= -KTriggerOffsetY && new.y+CGRectGetHeight(self.frame) - self.contentSize.height < KTriggerOffsetY && _state != ITRStateStay) {
-                _state = ITRStateNormal;
+            if (offsetY >= -KTriggerOffsetY && new.y+CGRectGetHeight(self.frame) - self.contentSize.height < KTriggerOffsetY && _state != JBStateStay) {
+                _state = JBStateNormal;
                 [self tableViewDidDragging];
-            } else if ((offsetY <= -KTriggerOffsetY && offsetY_old >= -KTriggerOffsetY) && _state == ITRStateNormal) {
+            } else if ((offsetY <= -KTriggerOffsetY && offsetY_old >= -KTriggerOffsetY) && _state == JBStateNormal) {
 //                NSLog(@"进入刷新区域");
                 
                 if (_isHaveRefreshView) {
-                    _state = ITRStatePulling;
+                    _state = JBStatePulling;
                 }
                 [_refreshView willBegin];
             } else if (new.y + CGRectGetHeight(self.frame) - self.contentSize.height >= KTriggerOffsetY
                        && old.y + CGRectGetHeight(self.frame) - self.contentSize.height <= KTriggerOffsetY
-                       && _state == ITRStateNormal) {
+                       && _state == JBStateNormal) {
 //                NSLog(@"进入加载区域");
                 
                 if (_isHaveLoadView) {
-                    _state = ITRStateLoading;
+                    _state = JBStateLoading;
                 }
                 [_loadView willBegin];
             }
-        } else if (self.decelerating && (_state == ITRStatePulling || _state == ITRStateLoading)) {
+        } else if (self.decelerating && (_state == JBStatePulling || _state == JBStateLoading)) {
 //            NSLog(@"开始刷新/加载");
             [self tableViewDidEndDragging];
         }
@@ -170,8 +162,8 @@ typedef enum : NSUInteger {
         [_loadView didBegin];
     }
     
-    if (_state == ITRStatePulling) {
-        _state = ITRStateStay;
+    if (_state == JBStatePulling) {
+        _state = JBStateStay;
         [UIView animateWithDuration:kPRAnimationDuration animations:^{
             self.contentInset = UIEdgeInsetsMake(_insets.top+KTriggerOffsetY, _insets.left, _insets.bottom , _insets.right);
         }];
@@ -179,8 +171,8 @@ typedef enum : NSUInteger {
         if ([_JBDelegate respondsToSelector:@selector(tableViewDidStartRefreshing:)]) {
             [_JBDelegate tableViewDidStartRefreshing:self];
         }
-    } else if (_state == ITRStateLoading) {
-        _state = ITRStateStay;
+    } else if (_state == JBStateLoading) {
+        _state = JBStateStay;
         [UIView animateWithDuration:kPRAnimationDuration animations:^{
             self.contentInset = UIEdgeInsetsMake(_insets.top, _insets.left, _insets.bottom + KTriggerOffsetY , _insets.right);
         }];
@@ -192,8 +184,8 @@ typedef enum : NSUInteger {
 }
 
 - (void)end {
-    if (_state == ITRStateStay) {
-        _state = ITRStateNormal;
+    if (_state == JBStateStay) {
+        _state = JBStateNormal;
         NSTimeInterval delay = 0.f;
         
         if (_isFinish) {
